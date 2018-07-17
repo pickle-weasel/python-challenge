@@ -17,14 +17,14 @@ with open(csvpath, 'r') as csvfile:
     
     votes = []
     name = []
-
+    
     for row in candidate_count:
         name.append(row[0])
         votes.append(row[1])
 
     candidate_zip = zip(name, votes)
     candidate_list = list(candidate_zip)
-   
+
     winner = max(votes)
 
     for row in candidate_list:
@@ -56,3 +56,16 @@ print(f"O'Tooley: {o_tooley_percent:.3%} ({o_tooley_total})")
 print(f'-------------------------')
 print(f'Winner: {winner_name}')
 print(f'-------------------------')
+
+with open('PyPoll.txt', 'w') as text_file:
+    print(f'Election Results', file=text_file)
+    print(f'-------------------------', file=text_file)
+    print(f'Total Votes: {total_votes}', file=text_file)
+    print(f'-------------------------', file=text_file)
+    print(f'Khan: {khan_percent:.3%} ({khan_total})', file=text_file)
+    print(f'Correy: {correy_percent:.3%} ({correy_total})', file=text_file)
+    print(f'Li: {li_percent:.3%} ({li_total})', file=text_file)
+    print(f"O'Tooley: {o_tooley_percent:.3%} ({o_tooley_total})", file=text_file)
+    print(f'-------------------------', file=text_file)
+    print(f'Winner: {winner_name}', file=text_file)
+    print(f'-------------------------', file=text_file)
